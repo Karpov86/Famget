@@ -1,4 +1,4 @@
-package by.karpov.famget.dao;
+package by.karpov.famget.dao.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;

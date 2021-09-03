@@ -1,11 +1,11 @@
-package by.karpov.famget.dao;
+package by.karpov.famget.dao.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.Hibernate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -15,9 +15,8 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
-@Table(name = "user")
+@Table(name = "usr")
 @Entity
 public class UserModel extends BaseModel
 {
@@ -25,7 +24,7 @@ public class UserModel extends BaseModel
 	@Column(name = "name")
 	private String name;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
 	private Set<TransactionModel> transactionModels;
 
 	@Override
@@ -43,5 +42,12 @@ public class UserModel extends BaseModel
 	public int hashCode()
 	{
 		return 0;
+	}
+
+	@Override
+	public String toString()
+	{
+		return getClass().getSimpleName() + "(" +
+				"name = " + name + ")";
 	}
 }
