@@ -1,2 +1,2 @@
 insert into usr
-values ('BigBoy'), ('Princess');
+values (1, 'BigBoy'), (2, 'Princess');
